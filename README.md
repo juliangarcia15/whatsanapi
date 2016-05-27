@@ -1,8 +1,8 @@
 # What's An API (Documentation)
 ___
 ##### TODO
-* ~~ Configure _git_ repo ~~
-* ~~ Configure _require.js_ ~~
+* ~~Configure _git_ repo~~
+* ~~Configure _require.js_~~
 * Backbone-ify
  * Create a Backbone View for in _giphy.js_
 * Add [Mustasche](https://github.com/janl/mustache.js)
