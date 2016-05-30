@@ -2,3 +2,12 @@
     <input type="text" size=20 name="q">
     <input type="submit" value="Search" id="search-submit"></input>
 </form>
+{{#results}}
+    {{>resultsTmpl}}
+{{/results}}
+{{^results}}
+    <div>
+        <span class="glyphicon glyphicon-remove-circle"></span>
+         ¯\_(ツ)_/¯ Sorry, there are no results to display at this time ¯\_(ツ)_/¯
+    </div>
+{{/results}}
