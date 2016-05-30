@@ -1,9 +1,9 @@
 define([
     'jquery', 'Backbone', 'Mustache'
 
-    , './giphy-collection.js'
+    , '../giphy/giphy-collection.js'
 
-    , 'text!giphy/templates/search-form.tmpl'
+    , 'text!templates/search-form.tmpl'
 ], function(
     $, Backbone, Mustache
 

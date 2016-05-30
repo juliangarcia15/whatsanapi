@@ -7,10 +7,12 @@ require.config({
     paths: {
         "jquery": "https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min",
         "underscore": "https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min",
-        "text": "lib/text-master/text",
+        "text": "_lib/text-master/text",
 
         "Backbone": "https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.3.3/backbone-min",
-        "Mustache" : "https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.min"
+        "Mustache" : "https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.min",
+
+        "templates": "views/templates"
     }
 });
 

@@ -2,7 +2,7 @@ define([
       'jquery'
     , 'Backbone'
 
-    , 'scripts/giphy/giphy-view.js'
+    , 'scripts/views/search-results-view.js'
 ], function(
       $
     , Backbone

@@ -7,14 +7,8 @@ ___
  * ~~Create a Backbone View for in _giphy.js_~~
 * ~~Add [Mustache](https://github.com/janl/mustache.js)~~
  * Make partial template to display giphy results nicely
-* Restructure file system:
- * scripts/
-  * views/
-   * templates/
-   * giphy-view rn ==> search-view
-  * giphy/
-   * collection
-   * model
+* Restructure file system 
+ * ~~May 30, 2016~~
 
 
 
