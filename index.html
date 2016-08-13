@@ -1,9 +1,46 @@
 <html>
     <head>
+        <!-- requirejs -->
         <script src="scripts/_lib/require.js" data-main="requireconfig"></script>
+        <!-- bootstrap: Latest compiled and minified CSS & theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     </head>
     <body>
-        <div id="loading_container">Loading...</div>
-        <div id="search-results-view-container"></div>
+        <div role="navigation">
+            <ul class="nav nav-tabs" role="tablist"><!-- Nav tabs -->
+                <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+                <li role="presentation"><a href="#giphy" aria-controls="giphy" role="tab" data-toggle="tab">Giphy</a></li>
+                <li role="presentation"><a href="#apod" aria-controls="apod" role="tab" data-toggle="tab">APOD</a></li>
+                <!-- <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li> -->
+            </ul>
+            <div class="tab-content"><!-- Tab panes -->
+                <div role="tabpanel" class="tab-pane fade in active" id="home">
+                    <div id="home-view"></div>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="giphy">
+                    <div id="giphy-view"></div>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="apod">
+                    <div id="apod-view"></div>
+                </div>
+                <!-- <div role="tabpanel" class="tab-pane fade" id="settings">
+                    <div id="apod-view"></div>
+                </div> -->
+            </div>
+        </div>
+
+        <!-- <nav>
+            <ul class="nav nav-tabs" id="app-nav">
+                <li id="home" role="presentation" class="active"><a href="#">Home</a></li>
+                <li id="giphy" role="presentation"><a href="#">Giphy</a></li>
+                <li id="apod" role="presentation"><a href="#">APOD</a></li>
+            </ul>
+            <div id="home-view" style="display:block;">
+                <div id="loading_container">Loading...</div>
+            </div>
+            <div id="giphy-view" style="display:none;"></div>
+            <div id="apod-view" style="display:none;"></div>
+        </nav> -->
     </body>
 </html>

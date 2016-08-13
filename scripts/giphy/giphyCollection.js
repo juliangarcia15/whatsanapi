@@ -1,19 +1,22 @@
 define([
-      'jquery'
-    , 'underscore'
-    , 'Backbone'
-
-    , './giphy-model.js'
+      'jquery',
+      'underscore',
+      'Backbone'
 ], function(
-      $
-    , _
-    , Backbone
-
-    , gifModel
+      $,
+      _,
+      Backbone
 ) {
-    var Gifs = Backbone.Collection.extend({
-        // TODO
-        model: gifModel,
+    var GiphyCollection = Backbone.Collection.extend({
+        model: Backbone.Model.extend({
+            defaults: {
+                id: '',
+                images: [],
+                rating: '',
+                type: '',
+                url: ''
+            }
+        }),      
 
         // the base URL for the Giphy API
         url: "",
@@ -24,10 +27,8 @@ define([
 
         initialize: function(options) {
             this.options = options || {};
-            // set query params
-            this.queryParams = options['queryParams'] ? options['queryParams'] : {};
             // set collection URL to API query
-            this.url = this.createSearchUrl(this.queryParams);
+            this.url = this.createSearchUrl(this.options);
 
             return this;
         },
@@ -42,7 +43,7 @@ define([
             if (response.meta.status == 200) {
                 var gifs = response.data;
 
-                for (var i = 0; i < 5 && i < gifs.length; i++) {
+                for (var i = 0; i < 10 && i < gifs.length; i++) {
                     var url = gifs[i]['images']['downsized']['url'],
                         images = gifs[i]['images'],
                         id = 'giphy_' + gifs[i]['id'];
@@ -62,19 +63,17 @@ define([
         // sync: function() {}
 
         createSearchUrl: function(data) {
-            var searchBase = "/v1/gifs/search?",
-                query = "q=" + data['q'].replace(/ /g, "+"),
-                // TODO make param option
-                limit = (limit) ? "&limit=" + limit : "",
-                // TODO make param option
-                offset = (offset) ? "&offset=" + offset : "",
-                // TODO make param option
-                rating = (rating) ? "&rating=" + rating : "";
+            var searchBase = "/v1/gifs/search?";
+            var params = [];
+            if (data.q      && data.q.length > 0)       params.push("q=" + data.q.replace(/ /g, "+"));
+            if (data.limit  && data.limit.length > 0)   params.push("limit="  + data.limit);
+            if (data.offset && data.offset.length > 0)  params.push("offset=" + data.offset);
+            if (data.rating && data.rating.length > 0)  params.push("rating=" + data.rating);
+            params.push(this.API_KEY_PUBLIC);
 
-            var url = this.baseURL + searchBase + query + limit + offset + rating + "&" + this.API_KEY_PUBLIC;
-
+            var url = this.baseURL + searchBase + params.join('&');
             return url;
         }
     });
-    return Gifs;
+    return GiphyCollection;
 });
