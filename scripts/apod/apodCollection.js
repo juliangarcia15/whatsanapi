@@ -16,7 +16,7 @@ define(function(require){
     //         hd	         bool	    False	  Retrieve the URL for the high resolution image
     //         api_key	     string	    API_KEY
 
-    var Apods = Backbone.Collection.extend({
+    var ApodCollection = Backbone.Collection.extend({
         model: Backbone.Model.extend({}),
 
         url: "",
@@ -29,7 +29,7 @@ define(function(require){
             // set query params
             this.queryParams = "";
             // set collection URL to API query
-            this.url = this.createSearchUrl(this.queryParams);
+            this.url = this.createSearchUrl(options);
 
             return this;
         },
@@ -40,5 +40,5 @@ define(function(require){
             return url;
         }
     });
-    return Apods;
+    return ApodCollection;
 });

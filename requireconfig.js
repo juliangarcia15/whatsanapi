@@ -32,7 +32,6 @@ require.config({
 
         'Backbone':     "https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.3.3/backbone-min",
         'Mustache':     "https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.min",
-        'foundation':   "https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.3/foundation.js",
         'jstree':       "_lib/jstree/dist/jstree",
 
         // Simplified project paths aka aliases

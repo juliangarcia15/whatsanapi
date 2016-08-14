@@ -10,17 +10,22 @@ define(function(require) {
     }
 
     return Backbone.View.extend({
+
         // the el where this content will be rendered
         el: "#search-form-view",
+        collection: '', // recreated every search action
+
         // defaults -- required, but can be overwritten on extention
         template: searchFormTmpl,
-        collection: '',
+        extendingCollection: '',
+
         // defaults -- optional and overwritable
         partials: {
         },
 
         events: {
-            "submit #search-form": "search",
+            "click #search-form #search-submit": "search",
+            "keypress #search-form": "checkKey"
         },
 
         initialize: function(options) {
@@ -44,20 +49,21 @@ define(function(require) {
         search: function(e) {
             e.preventDefault();
             var view = this; // used in callbacks
-            var form = $('form');
+
             // gather user inputed data & map it to JSON
-            var data = view.mapSerializedArrayToJSON(form.serializeArray());
+            var $form = this.$el.find('#search-form input'); // TODO add validation
+            var data = view.mapSerializedArrayToJSON($form.serializeArray());
 
             if (!this.hasCollection()) {
                 devError('collection');
                 return false;
             }
 
-            this.collection = new this.collection();
+            this.collection = new this.extendingCollection(data);
 
             // Fetch the collection and call render the view
             this.collection.fetch({
-                data: data,
+                // data: data, // so this does send data to the backend, good to know
                 success: function (results) {
                     if (results.length) {
                         if (typeof view.mapCollectionFetch == "function") {
@@ -65,12 +71,28 @@ define(function(require) {
                             view.render({
                                 'results': fetchedResults,
                             });
+                            // Temporary: so the user can see what they searched for (add search header for last X # of searches)
+                            view.$el.find('#search-form input').val(results.options.q);
                         } else {
                             devError('mapCollectionFetch');
                         }
                     }
+                },
+                error: function(params) {
+                    console.error('Could not fetch collection:',params);
                 }
             });
+        },
+
+        /**
+         * Submit search form on `enter` keypress event
+         */
+        checkKey: function(e) {
+            var ENTERKEY = '13';
+            var keycode = (event.keyCode ? event.keyCode : event.which);
+            if(keycode == ENTERKEY){
+               this.$el.find('#search-form #search-submit').click();
+            }
         },
 
         // == Util Functions == \\
@@ -99,6 +121,6 @@ define(function(require) {
 
         hasPartials: function() {
             return (this.partials.length > 1);
-        }
+        },
     });
 });

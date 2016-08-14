@@ -7,16 +7,13 @@ define(function(require) {
     var GiphyCollection     = require('../giphy/giphyCollection.js');
 
     var GifView = SearchView.extend({
-        // el - stands for element. Every view has an element associated with HTML content, will be rendered.
         el: "#giphy-view",
+        // className: "giphy-view", // TODO
 
-        className: "", // TODO
-
-        collection: GiphyCollection,
-
-        // API_KEY_PUBLIC : "api_key=dc6zaTOxFJmzC", // TODO REMOVE
+        extendingCollection: GiphyCollection,
 
         mapCollectionFetch: function(models){
+            // console.log('giphy fetched models:',models);
             var data = [];
 
             if (typeof models == 'undefined') {
@@ -33,10 +30,8 @@ define(function(require) {
                     'url': url
                 });
             }
-
             return data;
         }
-        // END UTIL FUNCTIONS
     });
     return GifView;
 });

@@ -3,60 +3,17 @@ define(function(require) {
     var $                   = require('jquery');
     var Backbone            = require('Backbone');
     var Mustache            = require('Mustache');
-    var apodCollection      = require('../apod/apodCollection.js');
+    var SearchView          = require('./searchView.js');
+    var ApodCollection      = require('../apod/apodCollection.js');
 
-    return Backbone.View.extend({
+    var ApodView = SearchView.extend({
         el: "#apod-view",
+        // className: "apod-view", // TODO
 
-        collection: '',
-        events: {
-            "click #apod-form button": "search", // TODO can we set the selector to this => form#search-form
-        },
-
-        initialize: function(options) {
-            this.options = options || {};
-            this.render();
-        },
-
-        render: function(data) {
-            var data = data || {results: []};
-            var mustacheHTML = Mustache.to_html(//this.template,data);
-                    // main template
-                    this.template,
-                    // data
-                    data,
-                    // partials
-                    {
-                        resultsTmpl: resultsTmpl
-                    }
-                );
-
-            this.$el.html(mustacheHTML);
-            // $('[data-toggle="tooltip"]').tooltip();
-
-            return this;
-        },
-
-        search: function(e) {
-            e.preventDefault();
-            var view = this; // used in callbacks
-            this.collection = new apodCollection();
-
-            // Fetch the collection and call render the view
-            this.collection.fetch({
-                success: function (results) {
-                    console.log('collection results:',results);
-                    if (results.length) {
-                        var fetchedResults = view.mapCollectionFetch(results.models);
-                        view.render({
-                            'results': fetchedResults,
-                        });
-                    }
-                }
-            });
-        },
+        extendingCollection: ApodCollection,
 
         mapCollectionFetch: function(models) {
+            // console.log('apod fetched models:',models);
             var data = [];
 
             if (typeof models == 'undefined') {
@@ -65,15 +22,17 @@ define(function(require) {
             }
 
             for (var i = 0; i < models.length; i++) {
-                var id = models[i].get('title'),
-                    url = models[i].get('url');
+                var title = models[i].get('title');
+                var hdurl = models[i].get('hdurl');
+                var url   = models[i].get('url');
 
                 data.push({
-                    'id': id,
-                    'url': url
+                    'id': title, // TODO change 'id' to val?
+                    'url': (hdurl.length > 0) ? hdurl : url // default to HD
                 });
             }
             return data;
         }
     });
+    return ApodView;
 })

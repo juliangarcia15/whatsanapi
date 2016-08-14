@@ -5,7 +5,7 @@ define(function(require) {
     var Mustache            = require('Mustache');
     var HomeTmpl            = require('text!templates/homeView.tmpl');
     var GifView             = require('scripts/views/giphyView.js');
-    // var ApodView            = require('views/apodView.js');
+    var ApodView            = require('scripts/views/apodView.js');
 
     // le entry to the whole shabang
     var AppView = Backbone.View.extend({
@@ -23,7 +23,7 @@ define(function(require) {
             this.$el.find('#home-view').html(Mustache.to_html(HomeTmpl));
 
             var giphyView = new GifView();
-            // var apodView = new ApodView();
+            var apodView = new ApodView();
 
             $('.tab-pane').tab();
         }

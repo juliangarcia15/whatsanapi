@@ -1,12 +1,8 @@
-define([
-      'jquery',
-      'underscore',
-      'Backbone'
-], function(
-      $,
-      _,
-      Backbone
-) {
+define(function(require){
+    var $ = require('jquery');
+    var _ = require('underscore');
+    var Backbone = require('Backbone');
+
     var GiphyCollection = Backbone.Collection.extend({
         model: Backbone.Model.extend({
             defaults: {
@@ -16,7 +12,7 @@ define([
                 type: '',
                 url: ''
             }
-        }),      
+        }),
 
         // the base URL for the Giphy API
         url: "",
@@ -64,14 +60,15 @@ define([
 
         createSearchUrl: function(data) {
             var searchBase = "/v1/gifs/search?";
-            var params = [];
+            var params = [];// something wrong here TODO
             if (data.q      && data.q.length > 0)       params.push("q=" + data.q.replace(/ /g, "+"));
             if (data.limit  && data.limit.length > 0)   params.push("limit="  + data.limit);
             if (data.offset && data.offset.length > 0)  params.push("offset=" + data.offset);
             if (data.rating && data.rating.length > 0)  params.push("rating=" + data.rating);
             params.push(this.API_KEY_PUBLIC);
+            var truthyParams = _.compact(params);
 
-            var url = this.baseURL + searchBase + params.join('&');
+            var url = this.baseURL + searchBase + truthyParams.join('&');
             return url;
         }
     });
