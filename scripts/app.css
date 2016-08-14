@@ -1,4 +1,13 @@
-/* home view */
+/*
+    TODO app styles and colors based off of:
+        * https://material.google.com/style/color.html#color-color-palette ==> Deep Purple
+        * http://work.smarchal.com/twbscolor/css/673ab7512da8ecf0f1b39ddb1
+        * #B39DDB ==> 200; #9575CD ==> 300; #673AB7 ==> 500; #512DA8 ==> 700; #311B92 ==> 900;
+*/
+/*@import url("views/styles/navbardeeppurple.css");*/
+nav {
+    margin-top: -30px;
+}
 ul.nav-tabs {
     margin-top: 5px;
     margin-bottom: 10px;

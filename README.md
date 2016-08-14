@@ -37,11 +37,11 @@ Below is the list of requested APIs in this project:
 ## External Libraries
 These are loaded using Requirejs in the _requireconfig.js_ file in the root of the project.
 * [Requirejs](http://requirejs.org/)
-* [jquery](https://jquery.com/)
+* [jquery 1.12.4](https://jquery.com/)
 * [underscore](http://underscorejs.org/)
 * [Backbone](http://backbonejs.org/)
 * [Mustache](https://github.com/janl/mustache.js)
-* [Bootstrap](http://getbootstrap.com/)
+* [Bootstrap 3.3.6](http://getbootstrap.com/)
 * [text](https://github.com/requirejs/text)
 * [jstree - NOT YET IN USE](https://www.jstree.com/)
 
