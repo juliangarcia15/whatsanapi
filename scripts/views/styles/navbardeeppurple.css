@@ -1,0 +1,89 @@
+.navbar-deep-purple {
+  background-color: #673ab7;
+  border-color: #512da8;
+}
+.navbar-deep-purple .navbar-brand {
+  color: #1de9b6;
+}
+.navbar-deep-purple .navbar-brand:hover,
+.navbar-deep-purple .navbar-brand:focus {
+  color: #00bfa5;
+}
+.navbar-deep-purple .navbar-text {
+  color: #1de9b6;
+}
+.navbar-deep-purple .navbar-nav > li > a {
+  color: #1de9b6;
+}
+.navbar-deep-purple .navbar-nav > li > a:hover,
+.navbar-deep-purple .navbar-nav > li > a:focus {
+  color: #00bfa5;
+}
+.navbar-deep-purple .navbar-nav > li > .dropdown-menu {
+  background-color: #673ab7;
+}
+.navbar-deep-purple .navbar-nav > li > .dropdown-menu > li > a {
+  color: #1de9b6;
+}
+.navbar-deep-purple .navbar-nav > li > .dropdown-menu > li > a:hover,
+.navbar-deep-purple .navbar-nav > li > .dropdown-menu > li > a:focus {
+  color: #00bfa5;
+  background-color: #512da8;
+}
+.navbar-deep-purple .navbar-nav > li > .dropdown-menu > li > .divider {
+  background-color: #512da8;
+}
+.navbar-deep-purple .navbar-nav .open .dropdown-menu > .active > a,
+.navbar-deep-purple .navbar-nav .open .dropdown-menu > .active > a:hover,
+.navbar-deep-purple .navbar-nav .open .dropdown-menu > .active > a:focus {
+  color: #00bfa5;
+  background-color: #512da8;
+}
+.navbar-deep-purple .navbar-nav > .active > a,
+.navbar-deep-purple .navbar-nav > .active > a:hover,
+.navbar-deep-purple .navbar-nav > .active > a:focus {
+  color: #00bfa5;
+  background-color: #512da8;
+}
+.navbar-deep-purple .navbar-nav > .open > a,
+.navbar-deep-purple .navbar-nav > .open > a:hover,
+.navbar-deep-purple .navbar-nav > .open > a:focus {
+  color: #00bfa5;
+  background-color: #512da8;
+}
+.navbar-deep-purple .navbar-toggle {
+  border-color: #512da8;
+}
+.navbar-deep-purple .navbar-toggle:hover,
+.navbar-deep-purple .navbar-toggle:focus {
+  background-color: #512da8;
+}
+.navbar-deep-purple .navbar-toggle .icon-bar {
+  background-color: #1de9b6;
+}
+.navbar-deep-purple .navbar-collapse,
+.navbar-deep-purple .navbar-form {
+  border-color: #1de9b6;
+}
+.navbar-deep-purple .navbar-link {
+  color: #1de9b6;
+}
+.navbar-deep-purple .navbar-link:hover {
+  color: #00bfa5;
+}
+
+@media (max-width: 767px) {
+  .navbar-deep-purple .navbar-nav .open .dropdown-menu > li > a {
+    color: #1de9b6;
+  }
+  .navbar-deep-purple .navbar-nav .open .dropdown-menu > li > a:hover,
+  .navbar-deep-purple .navbar-nav .open .dropdown-menu > li > a:focus {
+    color: #00bfa5;
+  }
+  .navbar-deep-purple .navbar-nav .open .dropdown-menu > .active > a,
+  .navbar-deep-purple .navbar-nav .open .dropdown-menu > .active > a:hover,
+  .navbar-deep-purple .navbar-nav .open .dropdown-menu > .active > a:focus {
+    color: #00bfa5;
+    background-color: #512da8;
+  }
+}

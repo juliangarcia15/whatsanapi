@@ -6,9 +6,14 @@
         * http://work.smarchal.com/twbscolor/css/673ab7512da8ecf0f1b39ddb1 ==> All Purple + Grey Default Color
         * #B39DDB ==> 200; #9575CD ==> 300; #673AB7 ==> 500; #512DA8 ==> 700; #311B92 ==> 900;
 */
-/*@import url("views/styles/navbardeeppurple.css");*/
-nav {
-    margin-top: -30px;
+@import url("views/styles/navbar-search-form.css");
+@import url("views/styles/navbardeeppurple.css");
+body {
+    color: #7E57C2;
+    background-color: #7E57C2;
+}
+.jumbotron {
+    margin-bottom: 0px;
 }
 ul.nav-tabs {
     margin-top: 5px;
