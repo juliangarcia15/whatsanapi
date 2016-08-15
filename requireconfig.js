@@ -1,6 +1,4 @@
 // currently running a-okay as of Aug 13, 2016
-// still figuring out how to make requirejs
-// play nice with css
 
 require.config({
     shim : {
@@ -27,7 +25,6 @@ require.config({
         // Util Libraries
         'jquery':       "_lib/jquery-1.12.4.min",//"https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min",// "_lib/jquery-1.12.4.min", // bootstrap currently needs 1.9.1 - 2
         'underscore':   "https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min",
-        // can't load boostrap for shit
         'bootstrap':    "_lib/bootstrap-3.3.6/js/bootstrap.min",//"//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min",
 
         'Backbone':     "https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.3.3/backbone-min",

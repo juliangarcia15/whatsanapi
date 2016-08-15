@@ -1,0 +1,11 @@
+<div class="grid">
+    {{#results}}
+        <div class="grid-item"><img src="{{url}}" name="{{name}}"></div>
+    {{/results}}
+</div>
+{{^results}}
+<!-- TODO make into empty message partial -->
+<div class="well well-sm">
+     ¯\_(ツ)_/¯ Sorry, there are no results to display at this time ¯\_(ツ)_/¯
+</div>
+{{/results}}

@@ -7,14 +7,6 @@
             </span>
         </div><!-- /input-group -->
     </div>
-    <div id="results-container">
-    {{#results}}
-        <img src="{{url}}" name="{{id}}">
-    {{/results}}
-    {{^results}}
-        <div class="well well-sm">
-             ¯\_(ツ)_/¯ Sorry, there are no results to display at this time ¯\_(ツ)_/¯
-        </div>
-    {{/results}}
-    </div>
+    <div id="results-container">{{>resultView}}</div>
+
 </div>

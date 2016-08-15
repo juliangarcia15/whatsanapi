@@ -5,12 +5,20 @@ define(function(require) {
     var Mustache            = require('Mustache');
     var SearchView          = require('./searchView.js');
     var GiphyCollection     = require('../giphy/giphyCollection.js');
+    var GiphyResultsTmpl    = require('text!templates/giphyResultsView.tmpl');
 
     var GifView = SearchView.extend({
         el: "#giphy-view",
         // className: "giphy-view", // TODO
 
         extendingCollection: GiphyCollection,
+        partials: {
+            'resultView': GiphyResultsTmpl,
+        },
+
+        // afterRender: function() {
+        //
+        // },
 
         mapCollectionFetch: function(models){
             // console.log('giphy fetched models:',models);
@@ -22,12 +30,14 @@ define(function(require) {
             }
 
             for (var i = 0; i < models.length; i++) {
-                var id = models[i].get('id'),
-                    url = models[i].get('url');
+                var name = models[i].get('id');
+                var url = models[i].get('url');
+                var images = models[i].get('images');
+                // console.log('giphy images:',images);
 
                 data.push({
-                    'id': id,
-                    'url': url
+                    'name': name,
+                    'url': images.fixed_height.url
                 });
             }
             return data;

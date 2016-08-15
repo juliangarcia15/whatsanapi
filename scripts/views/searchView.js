@@ -4,9 +4,10 @@ define(function(require) {
     var Backbone            = require('Backbone');
     var Mustache            = require('Mustache');
     var searchFormTmpl      = require('text!templates/searchForm.tmpl');
+    var resultsTmpl         = require('text!templates/resultsView.tmpl');
 
     var devError = function(param) {
-        console.error('Views extending search-view.js must overwrite the `'+ param +'` parameter/function.');
+        console.error('Views extending search-view.js must have the `'+ param +'` parameter/function.');
     }
 
     return Backbone.View.extend({
@@ -15,13 +16,15 @@ define(function(require) {
         el: "#search-form-view",
         collection: '', // recreated every search action
 
-        // defaults -- required, but can be overwritten on extention
-        template: searchFormTmpl,
+        // defaults -- required, must be overwritten on extention
         extendingCollection: '',
 
-        // defaults -- optional and overwritable
+        // defaults -- required, can be be overwritten on extention
+        template: searchFormTmpl,
         partials: {
+            'resultView': resultsTmpl,
         },
+        afterRender: false, // must be function if overwritten
 
         events: {
             "click #search-form #search-submit": "search",
@@ -35,13 +38,20 @@ define(function(require) {
 
         render: function(data) {
             var data = data || {results: []};
+            // console.log('searchView render data:',data);
 
             if (!this.hasTemplate()) {
                 devError('template');
             }
 
-            var mustacheHTML = Mustache.to_html(this.template, data);
+            var mustacheHTML = Mustache.to_html(this.template, data, this.partials);
+            // console.log('mustacheHTML',mustacheHTML);
             this.$el.html(mustacheHTML);
+
+            // let the extended view do things after rendering the main search/results view
+            if (this.afterRender && (typeof this.afterRender == "function")) {
+                this.afterRender();
+            }
 
             return this;
         },
@@ -68,6 +78,7 @@ define(function(require) {
                     if (results.length) {
                         if (typeof view.mapCollectionFetch == "function") {
                             var fetchedResults = view.mapCollectionFetch(results.models);
+                            // console.log('fetchedResults',fetchedResults);
                             view.render({
                                 'results': fetchedResults,
                             });

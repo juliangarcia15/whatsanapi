@@ -59,8 +59,8 @@ define(function(require){
         // sync: function() {}
 
         createSearchUrl: function(data) {
-            var searchBase = "/v1/gifs/search?";
-            var params = [];// something wrong here TODO
+            var searchBase = "/v1/gifs/search?"; // TODO make this endpoint switchable, see: "/v1/gifs/random"
+            var params = [];
             if (data.q      && data.q.length > 0)       params.push("q=" + data.q.replace(/ /g, "+"));
             if (data.limit  && data.limit.length > 0)   params.push("limit="  + data.limit);
             if (data.offset && data.offset.length > 0)  params.push("offset=" + data.offset);

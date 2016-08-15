@@ -22,12 +22,12 @@ define(function(require) {
             }
 
             for (var i = 0; i < models.length; i++) {
-                var title = models[i].get('title');
+                var name = models[i].get('title');
                 var hdurl = models[i].get('hdurl');
                 var url   = models[i].get('url');
 
                 data.push({
-                    'id': title, // TODO change 'id' to val?
+                    'name': name,
                     'url': (hdurl.length > 0) ? hdurl : url // default to HD
                 });
             }
